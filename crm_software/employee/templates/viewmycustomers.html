@@ -1,0 +1,62 @@
+{% extends 'empbase.html' %}
+
+{% block content %}
+
+<div class="container container-fluid">
+
+<div class="card card-flex bg-dark" >
+     <div class="card-header" style="background-color:#2c2c33">
+        <h4><font color="white"> Customers</font></h4>
+  </div>
+  <div class="card-body">
+    <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
+  </div>
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+
+  <ul class="list-group list-group-flush">
+        <table id="myTable" class="table table-dark">
+    <tr class="header">
+    <th  scope="col">Username</th>
+    <th  scope="col">Name</th>
+    <th  scope="col">Email Hello </th>
+  </tr>
+
+      {% for u in users %}
+<tr>
+<td>{{u.username}}</td>
+<td>{{u.first_name}}
+    {{u.last_name}}</td>
+    <td>{{u.email}}</td>
+
+</tr>
+ {% endfor %}
+        </table>
+  </ul>
+</div>
+</div>
+</div>
+<br>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+{% endblock %}

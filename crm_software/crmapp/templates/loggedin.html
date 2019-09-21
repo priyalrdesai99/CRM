@@ -1,0 +1,166 @@
+{%extends "base.html" %}
+
+{% block content %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js" type="text/javascript"></script>
+	<p>  </p><script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="jquery-2.1.4.min.js"></script>
+        <script src="Chart.js"></script>
+<div class="container" >
+
+	<div class="row">
+  <div class="col-sm-8" style="hight:100%;">
+    <div class="card bg-dark text-white" style="hight:100%;padding:20;">
+      <div class="card-body">
+		  <font size="60000"><b>Dash board</b></font>
+		  <br>
+		  <br>
+		  <h2>Total Leads <span class="badge badge-light">{{totalleads}}</span></h2>
+		  <h2>Hot  <span class="badge badge-light">{{hot}}</span></h2>
+		  <h2> Warm  <span class="badge badge-light">{{warm}}</span></h2>
+		  <h2>cold  <span class="badge badge-light">{{cold}}</span></h2>
+
+      </div>
+    </div>
+  </div>
+             <div class="col-sm-4">
+   <div class="card s">
+	   <h5 class="card-header">Leads</h5>
+<canvas id="piechart" width="5" class="card-body" height="5"></canvas>
+	</div>
+  </div>
+</div>
+	<br>
+<div class="card" >
+	<h5 class="card-header">sales</h5>
+	<canvas class="card-body" id="lineChart" width="400" height="100"></canvas>
+</div>
+<br>
+	<div class="card">
+		<h5 class="card-header">sales count</h5>
+		<canvas class="card-body" id="myChart"   width="400" height="100"></canvas>
+	</div>
+
+</div>
+
+        <script>
+
+        var ctx = document.getElementById('piechart').getContext('2d');
+var piechart = new Chart(ctx, {
+    type: 'doughnut',
+    data: {
+        labels: ["HOT","WARM","COLD"],
+        datasets: [{
+            label: 'sales count',
+            data:[{{hot}},{{warm}},{{cold}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+
+    }
+});
+
+
+        </script>
+	<script>
+
+  //line
+  var ctx = document.getElementById('lineChart').getContext('2d');
+var lineChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"],
+        datasets: [{
+            label: 'sales count',
+            data:{{data}},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+<br>
+<script>
+
+
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July","August","September","October","November","December"],
+        datasets: [{
+            label: 'sales',
+            data:{{salesData}},
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+{% endblock %}

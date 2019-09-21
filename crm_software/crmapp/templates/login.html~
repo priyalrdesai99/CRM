@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+	{% if form.errors %}
+		<p class="error"> Invalid Username or Password </p>
+	{% endif %}
+
+	<form action="/viewtest/auth/" method = "post">{% csrf_token %}
+		<label for="username">user name : </label>
+		<input type="text" name = "username" value = "" id="username">
+		<label for="password"> password:</label>
+		<input type="password" name="password" value="" id="password">
+		<input type="submit" value="login"/>
+	</form>
+	
+	<p> search student record. </p>
+
+	<form action="/firstdb/searchstudentinfo/" method = "post">{% csrf_token %}
+		<label for="studentname">Student Name : </label>
+		<input type="text" name = "studentname" value = "" id="studentname">
+		<input type="submit" value="Search"/>
+	</form>
+
+{% endblock %}

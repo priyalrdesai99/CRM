@@ -1,0 +1,100 @@
+{% load staticfiles%}
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            Register form
+        </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body style="background:url({% static 'crmapp/back2.jpg' %}); background-repeat: no-repeat;background-size: cover;">
+        <br>
+    <center>
+        <div class="container">
+
+            <div class="card" style="width: 30rem;">
+
+                <center><img src="{% static 'crmapp/crm.jpg' %}" width="200" height="170" class="d-inline-block align-top" alt="">  </center>
+                <h2> Register</h2>
+
+                <div class="card-body" >
+
+                    <form method="POST" action="/crmapp/registration/" >
+
+                        <input type="hidden" name="csrfmiddlewaretoken" value="GVeLkYwVcgEKibAN4N2V5svqYGfE94WObqeYaOSBJuRAuYqF1foI9AjU5oXO22zw">
+                        <table>
+                            <tr>
+                                <td colspan="2">
+                                    <div class="form-group">
+                                        <p><label for="id_username">Username:</label>
+                                            <input type="text" class="form-control" name="username" maxlength="150" autofocus required id="id_username">
+                                            <span class="helptext">Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</span></p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <p><label for="id_first_name">First name:</label>
+                                            <input type="text" name="first_name" class="form-control" maxlength="30" id="id_first_name"></p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <p><label for="id_last_name">Last name:</label>
+                                            <input type="text" name="last_name" maxlength="150" class="form-control" id="id_last_name"></p>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+
+                                        <p><label for="id_email">Email:</label>
+                                            <input type="email" name="email" required id="id_email" class="form-control"></p>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+
+                                        <p><label for="id_password1">Password:</label>
+                                            <input type="password" name="password1" required id="id_password1" class="form-control">
+                                            <span class="helptext"><ul><li>Your password can&#39;t be too similar to your other personal information.</li><li>Your password must contain at least 8 characters.</li><li>Your password can&#39;t be a commonly used password.</li><li>Your password can&#39;t be entirely numeric.</li></ul> </span> </p>
+                                    </div>
+
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+
+                                        <p><label for="id_password2">Password confirmation:</label>
+                                            <input type="password" name="password2" required id="id_password2" class="form-control">
+                                            <span class="helptext">Enter the same password as before, for verification.</span></p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>   <p>Select user type:
+
+                                    <select  name="user_type" >
+                                        <option value="employee">Employee</option>
+                                        <option value="manager">Manager</option>
+                                        <option value="customer">customer</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> <input type="submit" name="submit" value="submit" class="form-control" >  </td></tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </center>
+</body>
+</html>

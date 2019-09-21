@@ -1,0 +1,55 @@
+
+{% extends 'empbase.html' %}
+{% block content %}
+
+<center>
+        <div class="container">
+
+            <div class="card card-flex bg-dark" style="width: 30rem;">
+                <div class="card-body" >
+                    <table>
+                    <form method="POST" action="/employee/viewempprofile/" >
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <p><label for="id_first_name" style="color:white;">First name:</label>
+                                            <input type="text" class="form-control" name="first_name" maxlength="30" id="id_first_name" value="{{request.user.first_name}}"></p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <p><label for="id_last_name" style="color:white;">Last name:</label>
+                                            <input type="text" name="last_name" class="form-control" maxlength="150" id="id_last_name" value="{{request.user.last_name}}"></p>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+
+                                        <p><label for="id_email" style="color:white;">Email:</label>
+                                            <input type="email" name="email" required id="id_email" class="form-control" value="{{request.user.email}}"></p>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr><td><br></td></tr>
+
+                            <tr >
+                                <td> <input class="form-control" type="submit" name="submit" value="Update" >  </td>
+                            </tr>
+                    </form>
+                        <tr><td><br></td></tr>
+
+                        <form method="POST" action="/employee/updateemppassword/" >
+                         <tr>   <td>
+                                <input type="submit" class="form-control" name="submit" value="Change password" ></td></tr>
+                        </form>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </center>
+{% endblock %}

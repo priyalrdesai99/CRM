@@ -1,0 +1,8 @@
+{%extends "base.html" %}
+
+{% block content %}
+
+	<h2> Welcome {{full_name}} you are logged in! </h2>
+	<p> Click <a href="/firstdb/getstudentinfo/"</a> to add student info</p>
+	<p> Click <a href="/logintestapp/logout/"</a> to logout </p>
+{% endblock %}

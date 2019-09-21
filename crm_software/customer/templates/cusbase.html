@@ -1,0 +1,70 @@
+{% load staticfiles%}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/sidebar.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-grid.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-grid.min.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-reboot.css' %}" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap-reboot.min.css' %}" />
+        <title>CRM</title>
+
+
+    </head>
+    <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <ul class="navbar-nav ml-auto" >
+
+                    <li class="nav-item active">
+                        <a class="nav-link" href="../viewcusprofile">{{request.user.first_name}} {{request.user.last_name}}<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/crmapp/logout">Logout<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+    </nav>
+
+
+<div class="container-fluid">
+  <div class="row" >
+    <nav class="col-md-2 d-none d-md-block bg-dark sidebar">
+      <div class="sidebar-sticky">
+
+          <ul class="nav flex-column" >
+              <img src="{% static 'crmapp/logo.png'%}" STYLE="width:170px;">
+
+
+
+          <li class="nav-item">
+            <a class="nav-link" href="../viewpurchases">
+              <span data-feather="layers"></span>
+              Home
+            </a>
+          </li>
+
+        </ul>
+          <hr>
+<ul class="nav flex-column" >
+
+
+        </ul>
+      </div>
+    </nav>
+       <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 ">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+	{% block content %}
+	{% endblock %}
+      </div>
+       </main>
+  </div>
+</div>
+    </body>
+</html>
+
+

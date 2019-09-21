@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<div class="container container-fluid">
+<center>
+         <div class="row">
+  <div class="col-sm-4">
+    <div class="card bg-dark text-white">
+      <div class="card-body">
+        <h5 class="card-title">Hot leads</h5>
+
+        <a href="#" class="btn btn-primary">{{hot}}</a>
+      </div>
+    </div>
+  </div>
+
+             <div class="col-sm-4">
+    <div class="card bg-dark text-white">
+      <div class="card-body">
+        <h5 class="card-title">Warm leads</h5>
+
+        <a href="#" class="btn btn-primary">{{warm}}</a>
+      </div>
+    </div>
+  </div>
+             <div class="col-sm-4">
+    <div class="card bg-dark text-white">
+      <div class="card-body">
+        <h5 class="card-title">Cold leads</h5>
+
+        <a href="#" class="btn btn-primary">{{cold}}</a>
+      </div>
+    </div>
+  </div>
+</div>
+</center>
+    <br>
+
+
+
+
+
+<div class="card card-flex bg-dark" >
+    <div class="card-header" style="background-color:#2c2c33">
+        <h4><font color="white">Customers</font></h4>
+  </div>
+
+
+  <div class="card-body">
+    <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Search</span>
+  </div>
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+  </div>
+  <ul class="list-group list-group-flush">
+        <table id="myTable" class="table table-dark">
+    <tr class="header">
+    <th  scope="col">Username</th>
+    <th  scope="col">Name</th>
+    <th  scope="col">Email</th>
+        <th  scope="col">Number of logins</th>
+        <th  scope="col">lead status</th>
+  </tr>
+
+
+
+
+
+      {% for u in users %}
+<tr>
+<td>{{u.customer.username}}</td>
+<td>{{u.customer.first_name}}
+    {{u.customer.last_name}}</td>
+    <td>{{u.customer.email}}</td>
+<td>{{u.number}}</td>
+    {% for l in lead %}
+    {% if l.customer_id == u.customer_id %}
+    <td>{{l.lead}}</td>
+    {% endif %}
+    {% endfor %}
+</tr>
+ {% endfor %}
+        </table>
+  </ul>
+</div>
+</div>
+
+<br>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+{% endblock %}

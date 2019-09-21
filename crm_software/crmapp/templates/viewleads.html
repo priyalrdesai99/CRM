@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container container-fluid">
+
+<div class="card card-flex bg-dark" >
+<div class="card-header" style="background-color:#2c2c33">
+        <h4><font color="white">Leads</font></h4>
+  </div>
+
+  <div class="card-body bg-dark">
+    <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span class="input-group-text" id="inputGroup-sizing-default">Employees</span>
+  </div>
+  <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+</div>
+  </div>
+  <ul class="list-group list-group-flush">
+        <table id="myTable" class="table table-dark">
+    <tr class="header">
+    <th  scope="col">Employee ID</th>
+    <th  scope="col">Employee name</th>
+    <th  scope="col">Customer Name</th>
+    </tr>
+
+
+      {% for ec in empcust %}
+<tr>
+    <td>{{ec.id}}</td>
+    <td>{{ec.username}}</td>
+    <td>
+    {% for ci in ci %}
+    {% if ci.employee_id == ec.id %}
+     {{ci.customer_name}} &nbsp; &nbsp; <a href="../viewleads?name={{ci.customer_name}}"><button type="submit" class="btn btn-info">remove</button></a>
+        <BR><BR>
+    {% endif %}
+        {% endfor %}
+    </td>
+</tr>
+ {% endfor %}
+        </table>
+  </ul>
+</div>
+</div>
+
+<br>
+<script>
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+</script>
+{% endblock %}

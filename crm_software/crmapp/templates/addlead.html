@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container container-fluid">
+
+<div class="card card-flex bg-dark" >
+<div class="card-header" style="background-color:#2c2c33">
+        <h4><font color="white">Register new Lead</font></h4>
+  </div>
+
+    <ul class="list-group list-group-flush">
+        <table id="myTable" class="table table-dark">
+    <tr class="header">
+        <th  scope="col">Employees:</th>
+    <th  scope="col">Customers:</th>
+  </tr>
+   <tr>         <!--customers=request.session.customers-->
+
+      <form action="/crmapp/addlead/" method="post">
+
+          <td>
+          <select name="employee" class="form-control" required>
+            {% for e in employees %}
+                <option value="{{e.user.username}}">{{e.user.username}}</option>
+            {% endfor %}
+            </select>
+              </td>
+          <td>
+            <select name="customer" class="form-control" required>
+            {% for c in customers %}
+                    <option value="{{c.username}}">{{c.username}}</option>
+
+            {% endfor %}
+
+            </select>
+         </td>
+         <tr colspan="2">
+
+            <td >
+
+                <input type="submit" value="Add lead" class="btn btn-success" ></td></tr>
+      </form>
+
+   </tr>
+        </table>
+  </ul>
+</div>
+</div>
+
+{% endblock %}

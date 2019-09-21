@@ -1,0 +1,57 @@
+{% extends 'cusbase.html' %}
+
+{% block content %}
+
+<div class="container container-fluid">
+
+<div class="card card-flex bg-dark" >
+
+<div class="card-header" style="background-color:#2c2c33">
+        <h4><font color="white">Profile</font></h4>
+  </div>
+<div class="card-body">
+  <p class="list-group list-group-flush">
+      <table border="0">
+      <tr>
+      <td>
+      <p style="color:white;">      Username:</p>
+      </td>
+      <td>
+          <p style="color:white;">  {{request.user.username}}</p></td>
+  </tr>
+    <p>
+        <td><p style="color:white;">  First_Name:</p></td>
+        <td>
+    <p style="color:white;"> {{request.user.first_name}}</p>
+
+    </tr>
+    <tr>
+       <td> <p style="color:white;">  Last_Name: </p></td>
+    <td><p style="color:white;">  {{request.user.last_name}}</p></td>
+    </tr>
+    <tr>
+    <p>
+       <td> <p style="color:white;">    Email id:</p></td>
+    <td> <p style="color:white;">{{request.user.email}}</p>
+    </td>
+    </tr>
+    <tr>
+    <p>
+       <td> <p style="color:white;">   User_Type:</p></td>
+    <td> <p style="color:white;">{{user_type}}</p>
+    </td>
+    </tr>
+    <tr>
+        <td>
+            <form method="post" action="/customer/updatecusprofile/">
+                <input type="submit" value="update">
+            </form>
+        </td>
+    </tr>
+        </table>
+  </ul>
+</div>
+    </div>
+</div>
+</div>
+    {% endblock %}
